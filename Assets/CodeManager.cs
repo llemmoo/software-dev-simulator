@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
+using Unity.VisualScripting;
 
 public class CodeManager : MonoBehaviour
 {
@@ -18,11 +19,7 @@ public class CodeManager : MonoBehaviour
         Instance = this;
         _blocks = new List<DragDropBlock>();
     }
-
-    private void Update()
-    {
-        
-    }
+    
     
     //Method to be invoked by the "run" button
     private void RunCode()
