@@ -22,7 +22,7 @@ public class CodeManager : MonoBehaviour
     
     
     //Method to be invoked by the "run" button
-    private void RunCode()
+    public void RunCode()
     {
         GenerateCodeFromBlocks(_blocks);
         
