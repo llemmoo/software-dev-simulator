@@ -25,22 +25,23 @@ public class CodeManager : MonoBehaviour
     public void RunCode()
     {
         GenerateCodeFromBlocks(_blocks);
+        ExecuteCode(_codeToExecute);
         
-        if (!ValidateCode(_codeToExecute))
-        {
-            Debug.LogError("Invalid code");
-        }
-        else
-        {
-            try
-            {
-                ExecuteCode(_codeToExecute);
-            }
-            catch (Exception e)
-            {
-                Debug.LogException(e);
-            }
-        }
+        // if (!ValidateCode(_codeToExecute))
+        // {
+        //     Debug.LogError("Invalid code");
+        // }
+        // else
+        // {
+        //     try
+        //     {
+        //         ExecuteCode(_codeToExecute);
+        //     }
+        //     catch (Exception e)
+        //     {
+        //         Debug.LogException(e);
+        //     }
+        // }
     }
     
     private void GenerateCodeFromBlocks(List<DragDropBlock> blocks)
@@ -50,18 +51,18 @@ public class CodeManager : MonoBehaviour
         foreach (DragDropBlock block in blocks)
         {
             var blockBehaviour = block.GetComponent<BlockBehaviour>();
-            generatedCode+=(blockBehaviour._blockInputFieldText);
+            generatedCode+=(blockBehaviour._code);
         }
         Debug.Log(generatedCode);
         
         _codeToExecute = $@"
-                using System;
+                using UnityEngine;
 
                 public class DynamicClass
                 {{
                     public static void Execute()
                     {{
-                {generatedCode}
+                {generatedCode};
                     }}
                 }}";
     }

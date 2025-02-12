@@ -49,7 +49,7 @@ public class BlockBehaviour : MonoBehaviour
     {
         _code = BlockType switch
         {
-            BlockType.Output => "Console.WriteLine(\"" + inputFieldtext + "\");",
+            BlockType.Output => "Debug.Log(\"" + inputFieldtext + "\");",
             BlockType.Variable => "var x = \"" + inputFieldtext + "\";",
             BlockType.IfElse => "Console.WriteLine(\"" + inputFieldtext + "\");",
             _ => _code
